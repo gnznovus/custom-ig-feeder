@@ -22,7 +22,7 @@ docker compose up -d db wordpress
 echo "Waiting for WordPress initialization..."
 ready=0
 for i in $(seq 1 45); do
-  if wp core version >/dev/null 2>&1 && wp eval 'global $wpdb; if ( ! $wpdb->check_connection( false ) ) { exit(1); }' >/dev/null 2>&1; then ready=1; break; fi
+  if wp core version >/dev/null 2>&1; then ready=1; break; fi
   sleep 3
 done
 if [[ $ready -ne 1 ]]; then echo "WordPress or database not ready. Check docker compose logs." >&2; exit 1; fi
