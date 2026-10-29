@@ -7,7 +7,7 @@ if [[ ! -f .env ]]; then
 fi
 set -a
 # shellcheck disable=SC1091
-source .env
+source <(sed 's/\r$//' .env)
 set +a
 for key in WP_URL WP_TITLE WP_ADMIN_USER WP_ADMIN_PASSWORD WP_ADMIN_EMAIL DB_NAME DB_USER DB_PASSWORD DB_ROOT_PASSWORD; do
   [[ -n "${!key:-}" ]] || { echo "Missing $key in .env" >&2; exit 1; }
