@@ -1,0 +1,7 @@
+# Keep shell scripts and fixture files Unix-compatible on Windows.
+*.sh text eol=lf
+*.html text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.md text eol=lf
+*.example text eol=lf
