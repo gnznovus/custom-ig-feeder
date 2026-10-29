@@ -4,7 +4,7 @@ cd "$(dirname "$0")/.."
 [[ -f .env ]] || { echo "Missing .env" >&2; exit 1; }
 set -a
 # shellcheck disable=SC1091
-source .env
+source <(sed 's/\r$//' .env)
 set +a
 wp() { docker compose run --rm -T wpcli "$@"; }
 echo "=== Runtime ==="
